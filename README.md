@@ -4,20 +4,56 @@ O Doutor Nota é um modelo de inteligência artificial projetado para prever o d
 
 ## Requisitos
 
-- Python 3.11.6
+- Python 3.10.11
 
 ## Instalação
 
-Crie um ambiente virtual e instale as dependências:
+Para configurar o ambiente de desenvolvimento e instalar as dependências necessárias, siga os passos abaixo:
 
-no vscode é possivel criar um ambiente virtual com o comando `CTRL+SHIFT+P` e selecionando a opção Python: Create Environment
+1. Crie um ambiente virtual no VSCode. Para fazer isso, utilize o atalho `CTRL+SHIFT+P` e selecione a opção "Python: Create Environment".
 
-escolha `Venv` como o tipo de ambiente virtual
-em seguida escolha a versão do python que deseja utilizar
-por fim selecione o arquivo `requirements.txt` para instalar as dependências
+2. Escolha o tipo de ambiente virtual `Venv`.
 
-## Execução
+3. Selecione a versão do Python que deseja utilizar para o seu projeto.
 
-Quando o seu ambiente virtual estiver pronto, navegue até a pasta `src` e execute o notebook `download_data.ipynb` para baixar os dados necessários para treinar o modelo.
-Em seguida execute o notebook `data_normalization.ipynb` para realizar a normalização dos dados.
-Por fim execute o notebook `tf-keras_layers` para treinar o modelo.
+4. Por fim, selecione o arquivo `requirements.txt` para instalar as dependências necessárias. Isso garantirá que o ambiente virtual seja configurado com as bibliotecas corretas para o seu projeto.
+
+## Instruções de Execução
+
+Para seguir adiante com a execução deste projeto, siga as etapas abaixo:
+
+1. **Preparação do Ambiente Virtual**: Certifique-se de que o ambiente virtual necessário esteja configurado e pronto para uso.
+
+2. **Download de Dados**: Navegue até a pasta `src\notebooks` e execute o notebook `download_data.ipynb`. Esse passo é fundamental para obter os dados necessários para o treinamento do modelo.
+
+3. **Normalização dos Dados**: Execute o notebook `data_normalization.ipynb` para realizar a normalização dos dados. Isso é crucial para garantir que os dados estejam em um formato adequado para o treinamento do modelo.
+
+4. **Treinamento do Modelo**: Por fim, execute o notebook `LGBMClassifier.ipynb` para iniciar o treinamento do modelo. Este é o passo final que permitirá criar o modelo de classificação desejado.
+
+Siga essas etapas sequencialmente para obter os melhores resultados no seu projeto.
+
+## Realizando a predição
+
+No notebook `LGBMClassifier.ipynb` é possível realizar a predição de uma materia específica. Para isso, basta alterar o valor do dropdown `ccr`, do dropdown `docentes`
+
+## Estrutura do Projeto
+
+A estrutura do projeto está organizada da seguinte forma:
+
+```bash
+├── src
+│   ├── input
+│   │   ├── alunos.csv
+│   │   ├── test.json
+├── models
+│   └── LGBMClassifier.pkl
+├── notebooks
+│   ├── data_normalization.ipynb
+│   ├── download_dataset.ipynb
+│   └── LGBMClassifier.ipynb
+├── output
+│   └── alunos_final.csv
+├── .gitignore
+├── README.md
+├── requirements.txt
+```
