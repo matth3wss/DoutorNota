@@ -34,7 +34,7 @@ Siga essas etapas sequencialmente para obter os melhores resultados no seu proje
 
 ## Realizando a predição
 
-No notebook `LGBMClassifier.ipynb` é possível realizar a predição de uma materia específica. Para isso, basta alterar o valor do dropdown `ccr`, do dropdown `docentes`
+No notebook `LGBMClassifier.ipynb` é possível realizar a predição de uma materia específica. Para isso, basta alterar o valor do dropdown `ccr`, do dropdown `docentes` e usar o slider `frequencia` para definir a frequência do aluno.
 
 ## Estrutura do Projeto
 
