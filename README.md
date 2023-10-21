@@ -57,3 +57,152 @@ A estrutura do projeto está organizada da seguinte forma:
 ├── README.md
 ├── requirements.txt
 ```
+
+## Fine-tuning do dataset
+
+### 1ª Iteração
+
+Antes de iniciar a documentação das melhorias nas métricas, eu havia decidido que o modelo preveria o status (aprovado (0) ou reprovado (1)) com base nos seguintes atributos: ccr, frequência, disciplina e docentes.
+
+A tabela a seguir apresenta as métricas de desempenho do modelo:
+
+| Model                           | Accuracy | AUC    | Recall | Precision | F1    | Kappa  | MCC  |
+| ------------------------------- | -------- | ------ | ------ | --------- | ----- | ------ | ---- |
+| Light Gradient Boosting Machine | 0.7663   | 0.7884 | 0.407  | 0.6604    | 0.503 | 0.3618 | 0.38 |
+
+A imagem a seguir representa a importância das features do modelo em relação ao status, ou seja, quais dos atributos na tabela têm maior influência sobre a previsão do status.
+
+![png](/src/static/feature_importance/fi_1.png)
+
+A matriz de confusão do modelo apresenta os seguintes valores: TRUE POSITIVE, FALSE POSITIVE, FALSE NEGATIVE e TRUE NEGATIVE. Isso pode parecer um pouco confuso, mas esses valores desempenham papéis importantes. Os valores "TRUE POSITIVE" (0,0) indicam que o modelo acertou a previsão de aprovação do aluno em 91% das vezes, enquanto os valores "TRUE NEGATIVE" (1,1) representam a precisão do modelo ao prever a reprovação do aluno em 41% das vezes.
+
+Aqui está o porquê disso ser relevante: prever a reprovação de um aluno é uma questão séria. A métrica de Precisão ajuda a determinar quantas das previsões de reprovação feitas pelo modelo realmente correspondem à realidade. Por que isso é crucial? Se você basear suas decisões em minha IA para planejar seus estudos, ela poderá erroneamente prever que você será reprovado, mesmo que você possa passar no exame. Portanto, a precisão é uma métrica fundamental para avaliar a confiabilidade do modelo e a precisão de suas previsões.
+
+![png](/src/static/confusion_matrix/cm_1.png)
+
+|                    | 1ª Iteração |
+| ------------------ | ----------- |
+| **TRUE POSITIVE**  | 91%         |
+| **FALSE POSITIVE** | 9%          |
+| **FALSE NEGATIVE** | 59%         |
+| **TRUE NEGATIVE**  | 41%         |
+
+### 2ª Iteração
+
+Após várias tentativas de aprimorar os atributos, optei por revisitar a correlação entre algumas colunas do conjunto de dados para determinar se elas afetavam no status. Verifiquei que as colunas "faltas" e "nome_curso" não apresentavam uma correlação significativa, enquanto o atributo "ano" demonstrou ter uma correlação mais forte do que a frequência.
+
+| Model                           | Accuracy | AUC    | Recall | Precisão | F1     | Kappa  | MCC    |
+| ------------------------------- | -------- | ------ | ------ | -------- | ------ | ------ | ------ |
+| Light Gradient Boosting Machine | 0.7638   | 0.8052 | 0.4029 | 0.6557   | 0.4991 | 0.3559 | 0.3739 |
+
+![png](/src/static/feature_importance/fi_2.png)
+![png](/src/static/confusion_matrix/cm_2.png)
+
+Nesta tabela, podemos ver as mudanças nas taxas de TRUE POSITIVE, FALSE POSITIVE, FALSE NEGATIVE e TRUE NEGATIVE antes e após as melhorias na matriz de confusão.
+
+|                    | 1ª Iteração | 2ª Iteração |
+| ------------------ | ----------- | ----------- |
+| **TRUE POSITIVE**  | 91%         | 92% ⬆️1%    |
+| **FALSE POSITIVE** | 9%          | 8% ⬇️1%     |
+| **FALSE NEGATIVE** | 59%         | 58% ⬇️1%    |
+| **TRUE NEGATIVE**  | 41%         | 42% ⬆️1%    |
+
+### 3ª Iteração
+
+Percebi, ao analisar os dados manualmente, que alguns alunos estavam sendo reprovados mesmo tendo 100% de presença. Isso ocorria devido a alguns professores registrarem a presença dos alunos, mesmo quando estes não compareciam às aulas. Essa prática estava distorcendo as métricas.
+
+Assim, optei por excluir as linhas em que a situação da turma era igual a 1 (reprovação) e a frequência na turma era de 100%. Com essa pequena alteração, observamos uma melhora significativa nas métricas.
+
+| Model                           | Accuracy | AUC    | Recall | Prec.  | F1    | Kappa  | MCC    |
+| ------------------------------- | -------- | ------ | ------ | ------ | ----- | ------ | ------ |
+| Light Gradient Boosting Machine | 0.8392   | 0.8927 | 0.5245 | 0.7316 | 0.611 | 0.5131 | 0.5244 |
+
+Após implementar essas alterações, notou-se um aumento significativo na importância de todas as variáveis em relação ao atributo "status".
+
+![png](/src/static/feature_importance/fi_3.png)
+
+![png](/src/static/confusion_matrix/cm_3.png)
+
+|                    | 1ª Iteração | 2ª Iteração | 3 ª Iteração |
+| ------------------ | ----------- | ----------- | ------------ |
+| **TRUE POSITIVE**  | 91%         | 92% ⬆️1%    | 94 ⬆️2%      |
+| **FALSE POSITIVE** | 9%          | 8% ⬇️1%     | 6% ⬇️2%      |
+| **FALSE NEGATIVE** | 59%         | 58% ⬇️1%    | 48% ⬇️10%    |
+| **TRUE NEGATIVE**  | 41%         | 42% ⬆️1%    | 52% ⬆️10%    |
+
+### 4ª Iteração
+
+Anteriormente, eu havia decidido que os alunos reprovados devido a baixas notas e faltas não eram de interesse. No entanto, depois de examinar mais detalhadamente o conjunto de dados, percebi que poderia haver alunos que frequentaram algumas aulas, fizeram exames e, ao perceberem que tiveram um desempenho muito ruim, desistiram do curso. Portanto, decidi reintegrar esses alunos ao conjunto de dados, incluindo aqueles que foram reprovados por notas e reprovados por notas e faltas.
+
+| Model                           | Accuracy | AUC   | Recall | Prec.  | F1     | Kappa  | MCC    |
+| ------------------------------- | -------- | ----- | ------ | ------ | ------ | ------ | ------ |
+| Light Gradient Boosting Machine | 0.866    | 0.948 | 0.7379 | 0.8920 | 0.8077 | 0.7063 | 0.7138 |
+
+![png](/src/static/feature_importance/fi_4.png)
+![png](/src/static/confusion_matrix/cm_4.png)
+
+|                    | 1ª Iteração | 2ª Iteração | 3 ª Iteração | 4ª Iteração |
+| ------------------ | ----------- | ----------- | ------------ | ----------- |
+| **TRUE POSITIVE**  | 91%         | 92% ⬆️1%    | 94 ⬆️2%      | 94% ⬆️0%    |
+| **FALSE POSITIVE** | 9%          | 8% ⬇️1%     | 6% ⬇️2%      | 6% ⬆️0%     |
+| **FALSE NEGATIVE** | 59%         | 58% ⬇️1%    | 48% ⬇️10%    | 26% ⬇️22%   |
+| **TRUE NEGATIVE**  | 41%         | 42% ⬆️1%    | 52% ⬆️10%    | 74% ⬆️22%   |
+
+### 5ª Iteração
+
+Adicionei os alunos onde sit_turma = "REPROVADO POR FREQUENCIA" e com media != 0
+
+| Model                           | Accuracy | AUC   | Recall | Prec.  | F1     | Kappa  | MCC    |
+| ------------------------------- | -------- | ----- | ------ | ------ | ------ | ------ | ------ |
+| Light Gradient Boosting Machine | 0.8690   | 0.942 | 0.7495 | 0.8894 | 0.8135 | 0.7136 | 0.7199 |
+
+![png](/src/static/feature_importance/fi_5.png)
+![png](/src/static/confusion_matrix/cm_5.png)
+
+|                    | 1ª Iteração | 2ª Iteração | 3 ª Iteração | 4ª Iteração | 5ª Iteração |
+| ------------------ | ----------- | ----------- | ------------ | ----------- | ----------- |
+| **TRUE POSITIVE**  | 91%         | 92% ⬆️1%    | 94 ⬆️2%      | 94% ⬆️0%    | 94% ⬆️0%    |
+| **FALSE POSITIVE** | 9%          | 8% ⬇️1%     | 6% ⬇️2%      | 6% ⬆️0%     | 6% ⬆️0%     |
+| **FALSE NEGATIVE** | 59%         | 58% ⬇️1%    | 48% ⬇️10%    | 26% ⬇️22%   | 25% ⬇️1%    |
+| **TRUE NEGATIVE**  | 41%         | 42% ⬆️1%    | 52% ⬆️10%    | 74% ⬆️22%   | 75% ⬆️1%    |
+
+### 6ª Iteração
+
+Adicionei os alunos onde sit_turma = "DESISTENTE" e com media != 0
+
+| Model                           | Accuracy | AUC    | Recall | Prec.  | F1     | Kappa  | MCC    |
+| ------------------------------- | -------- | ------ | ------ | ------ | ------ | ------ | ------ |
+| Light Gradient Boosting Machine | 0.8697   | 0.9426 | 0.7553 | 0.8861 | 0.8155 | 0.7158 | 0.7213 |
+
+![png](/src/static/feature_importance/fi_6.png)
+![png](/src/static/confusion_matrix/cm_6.png)
+
+Resumo das matrizes de confusão
+
+| **Iteração** | **TRUE POSITIVE** | **FALSE POSITIVE** | **FALSE NEGATIVE** | **TRUE NEGATIVE** |
+| ------------ | ----------------- | ------------------ | ------------------ | ----------------- |
+| 1ª Iteração  | 91%               | 9%                 | 59%                | 41%               |
+| 2ª Iteração  | 92% ⬆️1%          | 8% ⬇️1%            | 58% ⬇️1%           | 42% ⬆️1%          |
+| 3ª Iteração  | 94% ⬆️2%          | 6% ⬇️2%            | 48% ⬇️10%          | 52% ⬆️10%         |
+| 4ª Iteração  | 94% ⬆️0%          | 6% ⬆️0%            | 26% ⬇️22%          | 74% ⬆️22%         |
+| 5ª Iteração  | 94% ⬆️0%          | 6% ⬆️0%            | 25% ⬇️1%           | 75% ⬆️1%          |
+| 6ª Iteração  | 94% ⬆️0%          | 6% ⬆️0%            | 24% ⬇️1%           | 76% ⬆️1%          |
+|              |                   |                    |                    |                   |
+| 1ª Iteração  | 91%               | 9%                 | 59%                | 41%               |
+| 6ª Iteração  | 94%               | 6%                 | 24%                | 76%               |
+| Resultados   | ⬆️3%              | ⬇️3%               | ⬇️35%              | ⬆️35%             |
+
+Resumo das métricas
+
+| Iterações   | Accuracy | AUC    | Recall | Prec.  | F1     | Kappa  | MCC    |
+| ----------- | -------- | ------ | ------ | ------ | ------ | ------ | ------ |
+| 1ª Iteração | 0.7663   | 0.7884 | 0.4070 | 0.6604 | 0.5030 | 0.3618 | 0.3800 |
+| 2ª Iteração | 0.7638   | 0.8052 | 0.4029 | 0.6557 | 0.4991 | 0.3559 | 0.3739 |
+| 3ª Iteração | 0.8392   | 0.8927 | 0.5245 | 0.7316 | 0.6110 | 0.5131 | 0.5244 |
+| 4ª Iteração | 0.8660   | 0.9480 | 0.7379 | 0.8920 | 0.8077 | 0.7063 | 0.7138 |
+| 5ª Iteração | 0.8690   | 0.9420 | 0.7495 | 0.8894 | 0.8135 | 0.7136 | 0.7199 |
+| 6ª Iteração | 0.8697   | 0.9426 | 0.7553 | 0.8861 | 0.8155 | 0.7158 | 0.7213 |
+|             |          |        |        |        |        |        |        |
+| 1ª Iteração | 0.7663   | 0.7884 | 0.4070 | 0.6604 | 0.5030 | 0.3618 | 0.3800 |
+| 6ª Iteração | 0.8697   | 0.9426 | 0.7553 | 0.8861 | 0.8155 | 0.7158 | 0.7213 |
+| Resultados  | ⬆️10%    | ⬆️20%  | ⬆️35%  | ⬆️34%  | ⬆️62%  | ⬆️97%  | ⬆️90%  |

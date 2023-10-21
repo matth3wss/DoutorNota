@@ -1,6 +1,5 @@
 # Data Science
 *.csv
-*.png
 *.pkl
 
 # Byte-compiled / optimized / DLL files
