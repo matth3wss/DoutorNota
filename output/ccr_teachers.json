@@ -1,0 +1,195 @@
+{
+    "Algebra linear - GEX607": [
+        "ANTONIO MARCOS CORREA NERI",
+        "DIVANE MARCON",
+        "EDSON RIBEIRO DOS SANTOS",
+        "ELISETE ADRIANA JOSE LUIZ"
+    ],
+    "Algoritmos e programação - GEX003": [
+        "ANDRESSA SEBBEN, GEOMAR ANDRE SCHREINER",
+        "ANDRESSA SEBBEN, MARINA GIROLIMETTO",
+        "DENIO DUARTE",
+        "DENIO DUARTE, MARINA GIROLIMETTO",
+        "EDIMAR ROQUE MARTELLO JUNIOR",
+        "GUILHERME DAL BIANCO"
+    ],
+    "Banco de dados I - GEX090": [
+        "ANDRESSA SEBBEN",
+        "DENIO DUARTE"
+    ],
+    "Banco de dados II - GEX091": [
+        "DENIO DUARTE",
+        "GUILHERME DAL BIANCO"
+    ],
+    "Circuitos digitais - GEN253": [
+        "ADRIANO SANICK PADILHA",
+        "GEOMAR ANDRE SCHREINER, LUCIANO LORES CAIMI",
+        "LUCIANO LORES CAIMI",
+        "LUCIANO LORES CAIMI, ADRIANO SANICK PADILHA"
+    ],
+    "Computação gráfica - GEX107": [
+        "GEOMAR ANDRE SCHREINER",
+        "MARINA GIROLIMETTO"
+    ],
+    "Construção de compiladores - GEX108": [
+        "BRAULIO ADRIANO DE MELLO"
+    ],
+    "Cálculo I - GEX178": [
+        "ANTONIO MARCOS CORREA NERI",
+        "DIEGO ANDERSON HOFF",
+        "EDSON RIBEIRO DOS SANTOS",
+        "ELISETE ADRIANA JOSE LUIZ",
+        "JANICE TERESINHA REICHERT",
+        "LUCIA MENONCINI",
+        "PAULO RAFAEL BOSING",
+        "PEDRO AUGUSTO PEREIRA BORGES",
+        "ROSANE ROSSATO BINOTTO"
+    ],
+    "Cálculo II - GEX392": [
+        "ANTONIO MARCOS CORREA NERI",
+        "EDSON RIBEIRO DOS SANTOS",
+        "JANICE TERESINHA REICHERT",
+        "LUCIA MENONCINI",
+        "PAULO RAFAEL BOSING"
+    ],
+    "Cálculo numérico - GEX395": [
+        "PAULO RAFAEL BOSING",
+        "PEDRO AUGUSTO PEREIRA BORGES"
+    ],
+    "Engenharia de software I - GEX615": [
+        "MARINA GIROLIMETTO, RAQUEL APARECIDA PEGORARO",
+        "RAQUEL APARECIDA PEGORARO"
+    ],
+    "Engenharia de software II - GEX616": [
+        "MARINA GIROLIMETTO",
+        "RAQUEL APARECIDA PEGORARO"
+    ],
+    "Estatística básica - GEX210": [
+        "CARLOS ROBERTO FRANCA",
+        "GLAUCIO ADRIANO FONTANA",
+        "JEAN FRANCO MENDES CALEGARI",
+        "JOSEANE DE MENEZES STERNADT",
+        "LEANDRO BORDIN",
+        "RICARDO MONTEIRO",
+        "TAINARA VOLAN"
+    ],
+    "Estruturas de dados - GEX605": [
+        "ANDREI DE ALMEIDA SAMPAIO BRAGA",
+        "ANDRESSA SEBBEN",
+        "DENIO DUARTE",
+        "DENIO DUARTE, GEOMAR ANDRE SCHREINER",
+        "DENIO DUARTE, GIANCARLO DONDONI SALTON",
+        "GEOMAR ANDRE SCHREINER",
+        "GIANCARLO DONDONI SALTON",
+        "MARCO AURELIO SPOHN"
+    ],
+    "Geometria analítica - GEX195": [
+        "ANA MARIA BASEI",
+        "ANTONIO MARCOS CORREA NERI",
+        "DIVANE MARCON",
+        "EDSON RIBEIRO DOS SANTOS",
+        "ELISETE ADRIANA JOSE LUIZ",
+        "JANICE TERESINHA REICHERT",
+        "PAULO RAFAEL BOSING",
+        "PEDRO AUGUSTO PEREIRA BORGES",
+        "ROSANE ROSSATO BINOTTO"
+    ],
+    "Grafos - GEN254": [
+        "ANDREI DE ALMEIDA SAMPAIO BRAGA",
+        "GEOMAR ANDRE SCHREINER",
+        "GIANCARLO DONDONI SALTON"
+    ],
+    "Iniciação à prática científica - GCH290": [
+        "ALEXANDRE MAURICIO MATIELLO, VALDETE BONI",
+        "ANDREI DE ALMEIDA SAMPAIO BRAGA",
+        "ANI CARLA MARCHESAN",
+        "FERNANDO VOJNIAK",
+        "GELSON AGUIAR DA SILVA MOSER, FABIANA BRUM HAAG",
+        "LIDIA LUCIA ANTONGIOVANNI",
+        "LUCIANA VANUZA GOBI",
+        "MARCO AURELIO SPOHN",
+        "MARINA GIROLIMETTO"
+    ],
+    "Inteligência artificial - GEX618": [
+        "ADRIANO SANICK PADILHA",
+        "FELIPE GRANDO"
+    ],
+    "Linguagens de programação - GEX617": [
+        "SAMUEL DA SILVA FEITOSA"
+    ],
+    "Linguagens formais e autômatos - GEX101": [
+        "ANDREI DE ALMEIDA SAMPAIO BRAGA",
+        "BRAULIO ADRIANO DE MELLO"
+    ],
+    "Matemática C - GEX213": [
+        "ANA MARIA BASEI",
+        "ANTONIO MARCOS CORREA NERI",
+        "CARLOS ROBERTO FRANCA",
+        "DANIELLE NICOLODELLI",
+        "DIEGO ANDERSON HOFF",
+        "EDERSON STAUDT",
+        "EDSON RIBEIRO DOS SANTOS",
+        "JANICE TERESINHA REICHERT",
+        "JEAN FRANCO MENDES CALEGARI",
+        "LUCIA MENONCINI",
+        "PEDRO AUGUSTO PEREIRA BORGES",
+        "TAINARA VOLAN"
+    ],
+    "Matemática discreta - GEX608": [
+        "ANTONIO MARCOS CORREA NERI",
+        "EDSON RIBEIRO DOS SANTOS",
+        "LUCIA MENONCINI",
+        "PAULO RAFAEL BOSING",
+        "ROSANE ROSSATO BINOTTO"
+    ],
+    "Organização de computadores - GEX612": [
+        "ADRIANO SANICK PADILHA",
+        "LUCIANO LORES CAIMI"
+    ],
+    "Pesquisa e ordenação de dados - GEX609": [
+        "ANDRESSA SEBBEN",
+        "ANDRESSA SEBBEN, GEOMAR ANDRE SCHREINER",
+        "DENIO DUARTE",
+        "GEOMAR ANDRE SCHREINER",
+        "GIANCARLO DONDONI SALTON",
+        "GUILHERME DAL BIANCO",
+        "MARCO AURELIO SPOHN"
+    ],
+    "Planejamento e gestão de projetos - GCS580": [
+        "EDIMAR ROQUE MARTELLO JUNIOR, RAQUEL APARECIDA PEGORARO",
+        "RAQUEL APARECIDA PEGORARO"
+    ],
+    "Probabilidade e estatística - GEX055": [
+        "JOSEANE DE MENEZES STERNADT",
+        "LEANDRO BORDIN",
+        "RICARDO MONTEIRO"
+    ],
+    "Programação I - GEX098": [
+        "ANDREI DE ALMEIDA SAMPAIO BRAGA",
+        "ANDRESSA SEBBEN",
+        "EDIMAR ROQUE MARTELLO JUNIOR, SAMUEL DA SILVA FEITOSA",
+        "SAMUEL DA SILVA FEITOSA"
+    ],
+    "Programação II - GEX613": [
+        "ANDRESSA SEBBEN",
+        "FELIPE GRANDO",
+        "MARINA GIROLIMETTO"
+    ],
+    "Redes de computadores - GEX105": [
+        "MARCO AURELIO SPOHN"
+    ],
+    "Sistemas digitais - GEX606": [
+        "ADRIANO SANICK PADILHA",
+        "GEOMAR ANDRE SCHREINER, LUCIANO LORES CAIMI",
+        "LUCIANO LORES CAIMI",
+        "LUCIANO LORES CAIMI, ADRIANO SANICK PADILHA"
+    ],
+    "Sistemas operacionais - GEX110": [
+        "MARCO AURELIO SPOHN"
+    ],
+    "Teoria da computação - GEX614": [
+        "ANDREI DE ALMEIDA SAMPAIO BRAGA",
+        "BRAULIO ADRIANO DE MELLO",
+        "SAMUEL DA SILVA FEITOSA"
+    ]
+}
