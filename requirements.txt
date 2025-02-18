@@ -111,7 +111,7 @@ kaleido==0.2.1
     # via pycaret
 kiwisolver==1.4.8
     # via matplotlib
-lightgbm==4.5.0
+lightgbm==4.6.0
     # via pycaret
 llvmlite==0.44.0
     # via numba
