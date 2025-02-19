@@ -4,6 +4,10 @@ import pandas as pd
 import streamlit as st
 from pycaret.classification import load_model, predict_model
 
+st.set_page_config(
+    page_title="Doctor Grade",
+)
+
 model = load_model("./src/models/LGBMClassifier")
 with open("./output/ccr_teachers.json", "r", encoding="utf-8", errors="ignore") as f:
     ccr_teachers = json.load(f)
