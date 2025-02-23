@@ -8,7 +8,16 @@ st.set_page_config(
     page_title="Doctor Grade",
 )
 
-model = load_model("./src/models/LGBMClassifier")
+
+class InferenceClass:
+    def __init__(self, model_path: str = "./src/models/LGBMClassifier"):
+        self.model = load_model(model_name=model_path)
+
+    def predict(self, input_df):
+        predictions_data = predict_model(estimator=self.model, data=input_df)
+        return predictions_data
+
+
 with open("./output/ccr_teachers.json", "r", encoding="utf-8", errors="ignore") as f:
     ccr_teachers = json.load(f)
 
@@ -18,12 +27,12 @@ with open(
     class_attendance = json.load(f)
 
 
-def predict(model, input_df):
-    predictions_data = predict_model(estimator=model, data=input_df)
-    return predictions_data
-
-
 def run():
+    st.markdown(
+        "<h1 style='text-align: center;'>🎓 Doctor Grade</h1>",
+        unsafe_allow_html=True,
+    )
+
     ccr = st.selectbox(
         "CCR",
         placeholder="Selecione um CCR",
@@ -62,7 +71,7 @@ def run():
     input_df = pd.DataFrame([input_dict])
 
     if st.button("Prever"):
-        output_df = predict(model=model, input_df=input_df)
+        output_df = InferenceClass().predict(input_df=input_df)
 
         status = "Aprovado" if output_df["prediction_label"][0] == 0 else "Reprovado"
 
