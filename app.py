@@ -4,9 +4,26 @@ import pandas as pd
 import streamlit as st
 from pycaret.classification import load_model, predict_model
 
-st.set_page_config(
-    page_title="Doctor Grade",
-)
+st.set_page_config(page_title="Doctor Grade", page_icon="🎓")
+
+
+def inject_custom_css():
+    st.markdown(
+        """
+        <style>
+        div[data-testid="stHeadingContainer"] {
+            text-align: center !important;
+        }
+        .st-emotion-cache-1cvow4s {
+            text-align: center !important;
+        }
+        [data-testid="stHeadingContainer"] h1, h2 {
+            font-size: 3rem !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 class InferenceClass:
@@ -28,10 +45,7 @@ with open(
 
 
 def run():
-    st.markdown(
-        "<h1 style='text-align: center;'>🎓 Doctor Grade</h1>",
-        unsafe_allow_html=True,
-    )
+    st.header(body="🎓 Doctor Grade")
 
     ccr = st.selectbox(
         "CCR",
@@ -85,6 +99,9 @@ def run():
             "Ir às aulas é importante, mas o desempenho final também depende de outros fatores, como método de ensino e preparo individual. "
             "Nem todo mundo começa do mesmo ponto – alguns já chegam com medalhas da OBMEP. 😉"
         )
+
+    # Inject CSS before any other content
+    inject_custom_css()
 
 
 if __name__ == "__main__":
