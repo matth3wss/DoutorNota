@@ -141,6 +141,8 @@ def run():
                 format_func=lambda x: f"{x}%",
                 key="attendance",
                 on_change=update_dataframe,
+                help="⚠️ A frequência mínima para aprovação é 75%. Valores menores não estão disponíveis "
+                "pois levam à reprovação automática, independentemente de outros fatores como Professor, CCR ou Turno.",
             )
 
         with col2:
