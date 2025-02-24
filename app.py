@@ -25,6 +25,9 @@ def inject_custom_css():
         [data-testid="stHeadingContainer"] h1, h2 {
             font-size: 3rem !important;
         }
+        [data-testid="stElementToolbar"] {
+            display: none;
+        }
         /* Add button container styling */
         .predict-button-container {
             display: flex;
